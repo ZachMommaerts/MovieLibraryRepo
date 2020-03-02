@@ -14,16 +14,18 @@ namespace WebAPISample.Controllers
     public class MovieController : ControllerBase
     {
         private ApplicationContext _context;
+        private static List<Movie> _movieList { get; set; } = new List<Movie>();
         public MovieController(ApplicationContext context)
         {
             _context = context;
         }
         // GET api/movie
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> Get()
         {
             // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
+            // return new string[] { "movie1 string", "movie2 string" };
+            return _movieList;
         }
 
         // GET api/movie/5
