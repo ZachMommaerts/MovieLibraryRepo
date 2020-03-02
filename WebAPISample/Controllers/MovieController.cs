@@ -30,7 +30,7 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(int MovieId)
         {
             var movieSelected = _context.Movies.Where(m => m.MovieId == id).Select(m => m.Title).FirstOrDefault();
             return movieSelected;
@@ -52,7 +52,7 @@ namespace WebAPISample.Controllers
 
         // DELETE api/movie/5
         [HttpDelete]
-        public void Delete(int id)
+        public void Delete(int MovieId)
         {
             // Delete movie from db logic
             var movieToDelete = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
