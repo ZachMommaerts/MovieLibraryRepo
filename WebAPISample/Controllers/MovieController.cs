@@ -28,7 +28,7 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(int MovieId)
         {
             // Retrieve movie by id from db logic
             return "value";
@@ -50,7 +50,7 @@ namespace WebAPISample.Controllers
 
         // DELETE api/movie/5
         [HttpDelete]
-        public void Delete(int id)
+        public void Delete(int MovieId)
         {
             // Delete movie from db logic
         }
