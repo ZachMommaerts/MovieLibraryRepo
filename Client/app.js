@@ -25,6 +25,7 @@
     }
 
     $('#my-form').submit( processForm );
+
 })(jQuery);
 $( document ).ready(function() {  
     $.ajax({  
