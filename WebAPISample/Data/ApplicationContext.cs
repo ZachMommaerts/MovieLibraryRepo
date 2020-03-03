@@ -13,15 +13,7 @@ namespace WebAPISample.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-<<<<<<< HEAD
-=======
-            // Seed data - needs migration
-            // modelBuilder.Entity<Movie>
-            //  .HasData(
-            //  new Movie{Fill All Properties}
-            //  );
-            // View PlayerTracker project for example
->>>>>>> ec7fd18bcfe37951b16fba2578d22ccdb6dc3ed5
+
             modelBuilder.Entity<Movie>().HasData(
                 new Movie { MovieId = 1, Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
                 new Movie { MovieId = 2, Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan" },

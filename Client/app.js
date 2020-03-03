@@ -25,7 +25,8 @@
     }
 
     $('#my-form').submit( processForm );
-})(jQuery);
+})
+(jQuery);
 $('#Button1').click(function () {
     $.ajax({
         url: "https://localhost:44325/api/movie"
