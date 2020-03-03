@@ -30,9 +30,9 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/5
         [HttpGet("{id}")]
-        public string Get(int MovieId)
+        public string Get(int id)
         {
-            var movieSelected = _context.Movies.Where(m => m.MovieId == MovieId).Select(m => m.Title).FirstOrDefault();
+            var movieSelected = _context.Movies.Where(m => m.MovieId == id).Select(m => m.Title).FirstOrDefault();
             return movieSelected;
         }
 
@@ -43,7 +43,6 @@ namespace WebAPISample.Controllers
             // Create movie in db logic. Needs input values before it can be completed. 
             _context.Movies.Add(value);
             _context.SaveChanges();
-
         }
 
         // PUT api/movie/5
@@ -69,10 +68,10 @@ namespace WebAPISample.Controllers
 
         // DELETE api/movie/5
         [HttpDelete]
-        public void Delete(int MovieId)
+        public void Delete(int id)
         {
             // Delete movie from db logic
-            var movieToDelete = _context.Movies.Where(m => m.MovieId == MovieId).FirstOrDefault();
+            var movieToDelete = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
             _context.Movies.Remove(movieToDelete);
             _context.SaveChanges();
         }
