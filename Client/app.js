@@ -26,3 +26,14 @@
 
     $('#my-form').submit( processForm );
 })(jQuery);
+$('#Button1').click(function () {
+    $.ajax({
+        url: "https://localhost:44325/api/movie"
+    }).done(function (data) {
+        console.log(data);
+        $('#results ul')
+            .append(data.map(function (val, i) {
+                return "<li>" + val + "</li>"
+            }));
+    });
+});
