@@ -8,7 +8,7 @@
         $.ajax({
             url: 'https://localhost:44325/api/movie',
             dataType: 'json',
-            type: 'Put',
+            type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
