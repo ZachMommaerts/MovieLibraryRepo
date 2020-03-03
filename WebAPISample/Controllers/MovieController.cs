@@ -24,7 +24,7 @@ namespace WebAPISample.Controllers
         {
             //retrieve all movies from dblogic
             var movieList = _context.Movies.Select(m => m.Title).ToList();
-            movieList.AsEnumerable().ToString();
+            movieList.AsEnumerable();
             return movieList;
         }
 
@@ -32,7 +32,7 @@ namespace WebAPISample.Controllers
         [HttpGet("{id}")]
         public string Get(int MovieId)
         {
-            var movieSelected = _context.Movies.Where(m => m.MovieId == id).Select(m => m.Title).FirstOrDefault();
+            var movieSelected = _context.Movies.Where(m => m.MovieId == MovieId).Select(m => m.Title).FirstOrDefault();
             return movieSelected;
         }
 
@@ -40,14 +40,31 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
-            // Create movie in db logic
+            // Create movie in db logic. Needs input values before it can be completed. 
+            _context.Movies.Add(value);
+            _context.SaveChanges();
+
         }
 
         // PUT api/movie/5
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Movie value)
         {
-            // Update movie in db logic
+            // Update movie in db logic. Needs input values before it can be completed.
+            var updatedMovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            if (value.Title != null)
+            {
+                updatedMovie.Title = value.Title;
+            }
+            if (value.Genre != null)
+            {
+                updatedMovie.Genre = value.Genre;
+            }
+            if (value.Director != null)
+            {
+                updatedMovie.Director = value.Director;
+            }
+            _context.SaveChanges();
         }
 
         // DELETE api/movie/5
@@ -55,7 +72,7 @@ namespace WebAPISample.Controllers
         public void Delete(int MovieId)
         {
             // Delete movie from db logic
-            var movieToDelete = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            var movieToDelete = _context.Movies.Where(m => m.MovieId == MovieId).FirstOrDefault();
             _context.Movies.Remove(movieToDelete);
             _context.SaveChanges();
         }
