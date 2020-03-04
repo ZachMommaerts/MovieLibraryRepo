@@ -56,18 +56,3 @@ $(document).ready(function() {
       });
     });
 });
-
-function getMovieFromDatabase(){
-  var urlParams = new URLSearchParams(window.location.search);
-  var movieId = urlParams.get('movieId');
-
-  $.ajax({
-    url: 'https://localhost:44325/api/movie',
-    dataType: 'json',
-    type: 'GET',
-    contentType: 'application/json',
-    data: JSON.stringify,
-    movie = data,
-
-  })
-}
