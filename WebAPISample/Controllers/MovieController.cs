@@ -29,9 +29,9 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-            var movieSelected = _context.Movies.Where(m => m.MovieId == id).Select(m => m.Title).FirstOrDefault();
+            var movieSelected = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
             return movieSelected;
         }
 
@@ -62,6 +62,7 @@ namespace WebAPISample.Controllers
             {
                 updatedMovie.Director = value.Director;
             }
+            _context.Movies.Update(updatedMovie);
             _context.SaveChanges();
         }
 
