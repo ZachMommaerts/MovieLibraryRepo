@@ -27,27 +27,27 @@
 })(jQuery); 
 
 $(document).ready(function() {
-    var movie_data = "";
-    $.getJSON("https://localhost:44325/api/movie", function(data) {
-      $.each(data, function(key, value) {
-        movie_data +=
-          "<tr " +
-          "<td>" +
-          value.title +
-          "</td>" +
-          "<td>" +
-          value.genre +
-          "</td>" +
-          "<td>" +
-          value.director +
-          "</td>" +
-          "<td>" +
-          '<button type="submit" a href="Details.html">Details</button>' +
-          "</tr>";
-      });
-      $("#myTable").append(movie_data);
+  var movie_data = "";
+  $.getJSON("https://localhost:44325/api/movie", function(data) {
+    $.each(data, function(key, value) {
+      movie_data +=
+        "<tr>" +
+        "<td>" +
+        value.title +
+        "</td>" +
+        "<td>" +
+        value.genre +
+        "</td>" +
+        "<td>" +
+        value.director +
+        "</td>" +
+        "<td>" +
+        '<a href="Details.html"><button type="submit">Details</button></a>' +
+        "</tr>";
     });
+    $("#myTable").append(movie_data);
   });
+});
   $(document).ready(function(){
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
