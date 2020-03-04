@@ -42,6 +42,14 @@ $(document).ready(function() {
           "</td>" +
           "</tr>";
       });
-      $("#Results_Table").append(movie_data);
+      $("#myTable").append(movie_data);
+    });
+  });
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
     });
   });
