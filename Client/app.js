@@ -42,7 +42,7 @@ $(document).ready(function() {
         value.director +
         "</td>" +
         "<td>" +
-        '<a href="Details.html"><button type="submit">Details</button></a>' +
+        "<a href='Details.html?movieId=" + value.movieId + "'><button type='submit'>Details</button></a>'" +
         "</tr>";
     });
     $("#myTable").append(movie_data);
