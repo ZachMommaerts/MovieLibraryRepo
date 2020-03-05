@@ -1,22 +1,33 @@
-function getMovieFromDatabase(){
-    var urlParams = new URLSearchParams(window.location.search);
-    var movieId = urlParams.get('movieId');
-  
-    $.ajax({
-      url: 'https://localhost:44325/api/movie',
+function displayMovie() {
+  $("#MovieTitle").html(movie["title"]);
+  $("#MovieDirector").html(movie["director"]);
+  $("#MovieGenre").html(movie["genre"]);
+}
+function getMovie() {
+  let params = new URLSearchParams(window.location.search);
+  movieId = params.get("movieId");
+  $.ajax({
+      url: 'https://localhost:44325/api/movie/' + movieId,
       dataType: 'json',
-      type: 'GET',
+      type: 'get',
       contentType: 'application/json',
-      data: JSON.stringify,
-      movie = data,
-  
-    })
-    return movieId;
-  }
-  
-  function showMovieDeets(){
-    document.getElementById("titler").innerHTML = movie.title;
-    document.getElementById("genrer").innerHTML = movie.genre;
-    document.getElementById("directorr").innerHTML = movie.director;
-  }
-  
+      success: function (data) {
+          movie = data;
+          displayMovie();
+      }
+  });
+}
+var movie;
+function putMovie() {
+  $.ajax({
+      url: "https://localhost:44325/api/movie/",
+      type: "put",
+      dataType: "text",
+      data: JSON.stringify(movie),
+      contentType: "application/json",
+      success: function () {
+          displayMovie();
+      }
+  });
+};
+$(document).ready(getMovie);
